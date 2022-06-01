@@ -1,0 +1,40 @@
+spring:
+  security:
+      oauth2:
+        client:
+          registration:
+            google:
+              clientId: 98295719970-77n20ecduptuhn3bdfg0mij0ikoakuci.apps.googleusercontent.com
+              clientSecret: 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
+              redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+              scope:
+                - email
+                - profile
+  datasource:
+      url: jdbc:mysql://localhost:3306/authserver?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+      username: root
+      password: my-secret-pw
+
+  jpa:
+      show-sql: true
+      hibernate:
+            ddl-auto: none
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+app:
+  auth:
+    #properties related to JWT secret.
+    tokenSecret: 04ca023b39512e46d0c2cf4b48d5aac61d34302994c87ed4eff225dcf3b0a218739f3897051a057f9b846a69ea2927a587044164b7bae5e1306219d50b588cb1
+    tokenExpirationMsec: 864000000
+  cors:
+    allowedOrigins: http://localhost:3000 # Comma separated list of allowed origins
+  oauth2:
+    # After successfully authenticating with the OAuth2 Provider,
+    # we'll be generating an auth token for the user and sending the token to the
+    # redirectUri mentioned by the client in the /oauth2/authorize request.
+    # We're not using cookies because they won't work well in mobile clients.
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
