@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.learning</groupId>
-	<artifactId>tweety</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>authserver</artifactId>
+	<version>1.0</version>
 	<packaging>war</packaging>
 	<name>tweety</name>
 	<description>Sample Twitter Application For Learning Purpose</description>
