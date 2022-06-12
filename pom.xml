@@ -15,6 +15,7 @@
 	<name>tweety</name>
 	<description>Sample Twitter Application For Learning Purpose</description>
 	<properties>
+		<start-class>com.learning.tweety.initializer.TweetyApplication</start-class>
 		<java.version>8</java.version>
 	</properties>
 	<dependencies>
