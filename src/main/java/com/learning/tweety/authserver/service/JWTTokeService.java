@@ -16,8 +16,6 @@ import java.util.UUID;
 
 @Service
 public class JWTTokeService {
-	//Secret should be stored in wallet.
-	String secret = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4";
 	@Autowired
 	YamlPropertiesService properties;
 	
@@ -38,7 +36,7 @@ public class JWTTokeService {
 	
 	public boolean isValidToken(String jwtString) {
 		try {
-			Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(secret), 
+			Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(properties.getJwtTokenSecret()), 
 					SignatureAlgorithm.HS256.getJcaName());
 			Jwts.parserBuilder().setSigningKey(hmacKey).build().parseClaimsJws(jwtString);
 			return true;
