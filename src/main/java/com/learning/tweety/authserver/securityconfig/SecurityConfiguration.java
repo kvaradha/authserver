@@ -1,18 +1,12 @@
 package com.learning.tweety.authserver.securityconfig;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
-import org.springframework.security.oauth2.client.web.HttpSessionOAuth2AuthorizationRequestRepository;
-import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.security.web.SecurityFilterChain;
-
-import com.learning.tweety.authserver.oauth.CustomOAuth2UserService;
 
 @Configuration
 @EnableWebSecurity
@@ -22,16 +16,6 @@ import com.learning.tweety.authserver.oauth.CustomOAuth2UserService;
         prePostEnabled = true
 )
 public class SecurityConfiguration {
-	
-	@Bean
-	public AuthorizationRequestRepository<OAuth2AuthorizationRequest> 
-	  authorizationRequestRepository() {
-	    return new HttpSessionOAuth2AuthorizationRequestRepository();
-	}
-	
-	@Autowired
-    private CustomOAuth2UserService customOAuth2UserService;
-	
 	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -61,22 +45,8 @@ public class SecurityConfiguration {
                 "/**/*.css",
                 "/**/*.js")
                 .permitAll()
-            .antMatchers("/auth/**", "/oauth2/**", "/authserver/**")
-                .permitAll()
-            .anyRequest()
-                .authenticated()
-            .and()
-            .oauth2Login()
-            .authorizationEndpoint()
-                .baseUri("/oauth2/authorize")
-                .authorizationRequestRepository(authorizationRequestRepository())
-                .and()
-            .redirectionEndpoint()
-                .baseUri("/oauth2/callback/*")
-        		.and()
-        	.userInfoEndpoint()
-                .userService(customOAuth2UserService);
+            .antMatchers("/authserver/**")
+                .permitAll();
         return http.build();
     }
-
 }

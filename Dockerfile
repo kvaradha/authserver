@@ -1,4 +1,4 @@
-FROM tomcat:latest
-ADD target/*.war /usr/local/tomcat/webapps/
-EXPOSE 8080
-CMD ["catalina.sh", "run"]
+FROM adoptopenjdk/openjdk11
+ARG JAR_FILE=authserver-2.7.0.jar
+COPY ${JAR_FILE} authserver.jar
+ENTRYPOINT ["java","-jar","/authserver.jar"]

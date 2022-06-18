@@ -10,13 +10,13 @@
 	</parent>
 	<groupId>com.learning</groupId>
 	<artifactId>authserver</artifactId>
-	<version>1.0</version>
-	<packaging>war</packaging>
+	<!--version>1.0<version>-->
+	<packaging>jar</packaging>
 	<name>tweety</name>
 	<description>Sample Twitter Application For Learning Purpose</description>
 	<properties>
-		<start-class>com.learning.tweety.initializer.TweetyApplication</start-class>
-		<java.version>8</java.version>
+		<start-class>com.learning.tweety.initializer.AuthServer</start-class>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -59,6 +59,23 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-api</artifactId>
+		    <version>0.11.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-impl</artifactId>
+		    <version>0.11.1</version>
+		    <scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-jackson</artifactId>
+		    <version>0.11.1</version>
+		    <scope>runtime</scope>
 		</dependency>
 	</dependencies>
 

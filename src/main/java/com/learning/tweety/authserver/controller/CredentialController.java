@@ -12,7 +12,7 @@ import com.learning.tweety.authserver.repository.Credentials;
 import com.learning.tweety.authserver.service.CredentialService;
 
 @RestController
-@RequestMapping("/authserver/creds")
+@RequestMapping("/authserver")
 public class CredentialController {
 	@Autowired
 	public CredentialService credentialService;

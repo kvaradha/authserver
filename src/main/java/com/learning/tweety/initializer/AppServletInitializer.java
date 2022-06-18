@@ -2,12 +2,14 @@ package com.learning.tweety.initializer;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Configuration;
 
-public class ServletInitializer extends SpringBootServletInitializer {
-
+@Configuration
+public class AppServletInitializer extends SpringBootServletInitializer {
+	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(TweetyApplication.class);
+		return application.sources(AuthServer.class);
 	}
 
 }
