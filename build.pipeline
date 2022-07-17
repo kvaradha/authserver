@@ -5,7 +5,6 @@ node {
     }
     
     stage("Build Code") {
-        echo "{JAVA_HOME}"
         def mvn_version = 'MavenInstaller'
         withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) {
             sh "mvn clean package  -DskipTests"
