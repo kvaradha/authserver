@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: authserver
+  labels:
+    app: authserver
   namespace: tweety-microservice
 spec:
   replicas: 1
