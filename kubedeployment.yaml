@@ -7,7 +7,7 @@ spec:
   replicas: 1
   containers:
   - name: authserver
-    image: hwchiu/netutils
+    image: karthiv89/authserver:1.0
     command:
       - sleep
       - "3600"
