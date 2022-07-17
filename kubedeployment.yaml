@@ -27,6 +27,8 @@ metadata:
   name: authserver
   namespace: tweety-microservice
 spec:
+  selector:
+    app: authserver
   type: LoadBalancer
   ports:
   - port: 80
