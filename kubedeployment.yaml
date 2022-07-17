@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authserver
+  namespace: tweety-microservice
+spec:
+  replicas: 1
+  containers:
+  - name: authserver
+    image: hwchiu/netutils
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+		
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authserver
+  namespace: tweety-microservice
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 8080
+    nodePort: 30001
