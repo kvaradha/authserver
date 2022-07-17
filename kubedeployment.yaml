@@ -13,7 +13,6 @@ spec:
       - "3600"
     imagePullPolicy: IfNotPresent
   restartPolicy: Always
-		
 ---
 apiVersion: v1
 kind: Service
