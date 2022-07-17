@@ -5,6 +5,13 @@ metadata:
   namespace: tweety-microservice
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: authserver
+  template:
+    metadata:
+      labels:
+        app: authserver
   containers:
   - name: authserver
     image: karthiv89/authserver:1.0
